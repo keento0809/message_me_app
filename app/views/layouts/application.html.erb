@@ -2,15 +2,28 @@
 <html>
   <head>
     <title>MessageMe</title>
+    <%= favicon_link_tag('favicon.ico') %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- ↓この1行を追記。assets配下に手動で追加したapplication.jsふぁいるなのでinclude_tagを用いる -->
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="ui small inverted menu">
+        <div class="ui container">
+            <%= render 'layouts/navigation' %>
+        </div>
+    </div>
+</div>
+    <div class="ui container">
+        <%= yield %>
+    </div>
   </body>
+  <!-- js読み込み -->
+  <%#= javascript_pack_tag 'index' %>
 </html>
